@@ -27,7 +27,17 @@
                             <p class="card-text">
                                 {{ $post->content }}
                             </p>
-                            <a href="{{ route('posts.single', $post->id) }}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
+                            <div class="d-flex gap-2 justify-content-center">
+                                <a href="{{ route('posts.single', $post->id) }}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
+                                <a href="{{ route('posts.edit' , $post->id)}}" class="btn btn-info" data-mdb-ripple-init>Edit</a>
+
+                                <form action="{{ route('posts.delete' , $post->id) }}" method="Post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
