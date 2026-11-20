@@ -29,11 +29,11 @@
               <div class="collapse navbar-collapse" id="navbarExample01">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item active">
-                          <a class="nav-link" aria-current="page" href="#intro">Home</a>
+                          <a class="nav-link" aria-current="page" href="{{ route('posts.home') }}">Home</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                              target="_blank">Learn Bootstrap 5</a>
+                          <a class="nav-link" href="{{ route('posts.create') }}" rel="nofollow"
+                              target="_blank">Create Post</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Download MDB UI KIT</a>
@@ -48,22 +48,10 @@
                               <i class="fab fa-youtube"></i>
                           </a>
                       </li>
-                      <li class="nav-item me-3 me-lg-0">
-                          <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
-                              <i class="fab fa-facebook-f"></i>
-                          </a>
-                      </li>
-                      <li class="nav-item me-3 me-lg-0">
-                          <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-                              <i class="fab fa-twitter"></i>
-                          </a>
-                      </li>
-                      <li class="nav-item me-3 me-lg-0">
-                          <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-                              <i class="fab fa-github"></i>
-                          </a>
-                      </li>
+                      
                   </ul>
+                  <button class="btn btn-primary">Login</button>
+                  <button class="btn btn-primary" style="margin: 10px;">Register</button>
               </div>
           </div>
       </nav>
@@ -71,8 +59,8 @@
 
       <!-- Jumbotron -->
       <div id="intro" class="p-5 text-center bg-light">
-          <h1 class="mb-3 h2">Learn Bootstrap 5 with MDB</h1>
-          <p class="mb-3">Best & free guide of responsive web design</p>
+          <h1 class="mb-3 h2">Blog Page</h1>
+          <p class="mb-3">You can create your post <a href="{{ route('posts.create') }}">here</a></p>
           <a class="btn btn-primary m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" data-mdb-ripple-init
               target="_blank">Start tutorial</a>
           <a class="btn btn-primary m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank" data-mdb-ripple-init
