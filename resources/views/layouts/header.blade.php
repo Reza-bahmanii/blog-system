@@ -35,9 +35,6 @@
                           <a class="nav-link" href="{{ route('posts.create') }}" rel="nofollow"
                               target="_blank">Create Post</a>
                       </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Download MDB UI KIT</a>
-                      </li>
                   </ul>
 
                   <ul class="navbar-nav d-flex flex-row">

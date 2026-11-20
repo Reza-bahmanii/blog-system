@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('comment_id')->constrained();
+            $table->foreignId('category_id')->constrained();
             $table->string('title');
             $table->string('content');
             $table->string('image');
             $table->timestamps();
         });
     }
-// 1 1 
+
     /**
      * Reverse the migrations.
      */
