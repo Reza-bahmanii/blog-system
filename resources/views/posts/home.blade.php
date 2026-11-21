@@ -18,7 +18,7 @@
                     <div class="card">
                         <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
                             <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
-                            <a href="{{ route('posts.single', $post->id) }}">
+                            <a href="{{ route('posts.store', $post->id) }}">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
                         </div>
@@ -28,10 +28,10 @@
                                 {{ $post->content }}
                             </p>
                             <div class="d-flex gap-2 justify-content-center">
-                                <a href="{{ route('posts.single', $post->id) }}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
+                                <a href="{{ route('posts.store', $post->id) }}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
                                 <a href="{{ route('posts.edit' , $post->id)}}" class="btn btn-info" data-mdb-ripple-init>Edit</a>
 
-                                <form action="{{ route('posts.delete' , $post->id) }}" method="Post">
+                                <form action="{{ route('posts.destroy' , $post->id) }}" method="Post">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger" type="submit">Delete</button>

@@ -29,7 +29,7 @@
               <div class="collapse navbar-collapse" id="navbarExample01">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item active">
-                          <a class="nav-link" aria-current="page" href="{{ route('posts.home') }}">Home</a>
+                          <a class="nav-link" aria-current="page" href="{{ route('posts.index') }}">Home</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('posts.create') }}" rel="nofollow"
@@ -47,8 +47,8 @@
                       </li>
                       
                   </ul>
-                  <button class="btn btn-primary">Login</button>
-                  <button class="btn btn-primary" style="margin: 10px;">Register</button>
+                  <a href="{{ route('login') }}" class="btn btn-primary" style="margin: 10px;">Login</a>
+                  <a href="{{ route('register') }}" class="btn btn-primary" style="margin: 10px;">Register</a>
               </div>
           </div>
       </nav>
