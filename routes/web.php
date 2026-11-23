@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
+use App\Models\Category;
 Route::get('/', function () {
+
+    Category::create([
+                     'name' => 'sport'
+    ]);
     return view('welcome');
 });
 
