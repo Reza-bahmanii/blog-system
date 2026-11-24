@@ -3,28 +3,47 @@
 @section('title', 'Post List')
 
 @section('content')
-<section class="text-center">
-    <h4 class="mb-5"><strong>Latest posts</strong></h4>
+    <section class="text-center">
+        <h4 class="mb-5"><strong>Latest posts</strong></h4>
 
 
 
-    <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-8 mb-4">
-            <div class="card">
-                <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
-                    <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-8 mb-4">
+                <div class="card">
+                    <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+                        <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $post->title }}</h5>
+                        <p class="card-text">
+                            {{ $post->content }}
+                        </p>
+
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ $post->title }}</h5>
-                    <p class="card-text">
-                        {{ $post->content }}
-                    </p>
-                    
-                </div>
+    </section>
+
+@endsection
+
+@section('comment')
+
+    <div>
+    <form action="{{ route('posts.comment', [$post]) }}" method="post">
+    @csrf
+        <div class="form-group">
+        <label>Write a comment9999999999999</label>
+
+            <textarea name="content" class="form-control"
+            placeholder="Write your comment...">{{ old('content') }}</textarea>
+                @error('content')
+            <span style="color:red">{{ $message }}</span>
+                @enderror
             </div>
-        </div>
-    </div>
-</section>
-<!--Section: Content-->
 
+        <button type="submit" class="btn btn-primary mt-2">
+        Send
+            </button>
+        </form>
+        </div>
 @endsection

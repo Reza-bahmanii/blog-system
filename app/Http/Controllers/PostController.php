@@ -54,6 +54,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($postId);
 
+        // select comment => send to view
         return view('posts.single', compact('post'));
     }
 

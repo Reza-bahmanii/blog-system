@@ -41,7 +41,16 @@
  </footer>
  <!--Footer-->
  <!-- MDB -->
- <script src="{{ asset('assets/js/mdb.umd.min.js') }}"></script>
+ <script src="{{ asset('assets/js/mdb.umd.min.js') }}">
+ <script async src="https://cdn.fastcomments.com/js/embed-v2-async.min.js"></script>
+ <div id="fastcomments-widget"></div>
+ <script>
+ window.fcConfigs = [{
+         target: '#fastcomments-widget',
+         tenantId: 'demo'
+     }];
+     </script>
+ </script>
  </body>
 
  </html>

@@ -17,6 +17,6 @@
     @include('layouts.header')
 
     @yield('content')
-    
+    @yield('comment')
     @include('layouts.footer')
 </body>
