@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Post extends Model
 {
@@ -21,8 +21,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function category(): HasMany
+    public function category(): BelongsTo
     {
-        $this->Hasmany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }

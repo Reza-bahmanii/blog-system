@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Category;
-use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -15,6 +14,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->get();
+
         return view('posts.home', compact('posts'));
     }
 
@@ -23,8 +23,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        $category = Category::latest()->get();
-        return view('posts.create' , compact('category'));
+        $categories = Category::latest()->get();
+
+        return view('posts.create', compact('categories'));
     }
 
     /**
@@ -34,15 +35,14 @@ class PostController extends Controller
     {
         $validateDate = $request->validate([
             'title' => ['required', 'min:5', 'max:255'],
-            // 'category' => ..........
+            'category_id' => ['required','exists:categories,id'],
             'content' => ['required', 'min:5', 'max:255'],
         ]);
         $user = auth()->user();
-        $post =                 $user->posts()->create([
-            ...$validateDate,
-            'category_id' => 1
-        ]);
-
+        $category = 
+            $post = $user->posts()->create([
+                ...$validateDate,
+            ]);
 
         return redirect(route('posts.index'));
     }
@@ -53,6 +53,7 @@ class PostController extends Controller
     public function show($postId)
     {
         $post = Post::findOrFail($postId);
+
         return view('posts.single', compact('post'));
     }
 
@@ -62,6 +63,7 @@ class PostController extends Controller
     public function edit($postId)
     {
         $post = Post::findorfail($postId);
+
         return view('posts.edit', compact('post'));
     }
 
@@ -77,6 +79,7 @@ class PostController extends Controller
         ]);
         $post = Post::findOrFail($postId);
         $post = Post::where('id', $postId)->update($validateDate);
+
         return redirect(route('posts.show', $postId));
     }
 

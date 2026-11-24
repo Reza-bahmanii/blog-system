@@ -28,6 +28,9 @@
                             <p class="card-text">
                                 {{ $post->content }}
                             </p>
+                            <p>
+                               Category:  {{ $post->category->name }}
+                            </p>
                             @auth
                             @if(auth()->id() === $post->user_id)
                             <div class="d-flex gap-2 justify-content-center">

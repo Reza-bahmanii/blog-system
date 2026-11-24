@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -11,8 +11,8 @@ class Category extends Model
         'name'
     ];
 
-    public function posts(): BelongsTo
+    public function posts(): HasMany
     {
-        $this->belongsTo(post::class);
+        return $this->hasMany(Post::class);
     }
 }
