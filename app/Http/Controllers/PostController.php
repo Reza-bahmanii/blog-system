@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,6 @@ class PostController extends Controller
     {
         $posts = Post::latest()->get();
         return view('posts.home', compact('posts'));
-        
     }
 
     /**
@@ -23,7 +23,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $category = Category::latest()->get();
+        return view('posts.create' , compact('category'));
     }
 
     /**
@@ -37,10 +38,10 @@ class PostController extends Controller
             'content' => ['required', 'min:5', 'max:255'],
         ]);
         $user = auth()->user();
-        $post = $user->posts()->create([
-                                       ...$validateDate,
-                                       'category_id' => 1
-        ]); 
+        $post =                 $user->posts()->create([
+            ...$validateDate,
+            'category_id' => 1
+        ]);
 
 
         return redirect(route('posts.index'));

@@ -38,13 +38,13 @@
                   </ul>
 
                   <ul class="navbar-nav d-flex flex-row">
-                      <!-- Icons -->
+                      {{-- <!-- Icons -->
                       <li class="nav-item me-3 me-lg-0">
                           <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
                               target="_blank">
                               <i class="fab fa-youtube"></i>
                           </a>
-                      </li>
+                      </li> --}}
                       
                   </ul>
                   <a href="{{ route('login') }}" class="btn btn-primary" style="margin: 10px;">Login</a>

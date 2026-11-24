@@ -17,7 +17,9 @@
     <div class="form-group">
         <label>Category</label>
         <select name="category" id="category">
-
+            <option>
+                
+            </option>
         </select>
     </div><br>
     
