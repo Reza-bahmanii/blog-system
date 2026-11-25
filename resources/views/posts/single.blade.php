@@ -27,12 +27,39 @@
 @endsection
 
 @section('comment')
+    <div class="container mt-4">
+
+        <h4 class="mb-3">Comments</h4>
+
+        @forelse ($comments as $comment)
+
+            <div class="card mb-3">
+                <div class="card-body">
+
+                    <p class="card-text">
+                        {{ $comment->content }}
+                    </p>
+
+                    <small>
+                        {{ $comment->created_at}}
+                    </small>
+
+                </div>
+            </div>
+
+        @empty
+
+            <div class="card mb-3">
+                There is no comment yet.
+            </div>
+
+        @endforelse
 
     <div>
     <form action="{{ route('posts.comment', [$post]) }}" method="post">
     @csrf
         <div class="form-group">
-        <label>Write a comment9999999999999</label>
+        <label>Write a comment</label>
 
             <textarea name="content" class="form-control"
             placeholder="Write your comment...">{{ old('content') }}</textarea>

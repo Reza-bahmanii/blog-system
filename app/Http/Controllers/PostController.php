@@ -50,12 +50,11 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($postId)
+    public function show(Post $post)
     {
-        $post = Post::findOrFail($postId);
-
+        $comments = $post->comments()->latest()->get();
         // select comment => send to view
-        return view('posts.single', compact('post'));
+        return view('posts.single', compact('comments' , 'post'));
     }
 
     /**
