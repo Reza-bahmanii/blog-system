@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 
 use App\Models\Category;
+use Illuminate\Auth\Events\Logout;
 
 Route::get('/', function () {
 
@@ -25,5 +27,7 @@ Route::post('register', [RegisterController::class, 'register']);
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+
+Route::post('logout', [LogoutController::class , 'destroy'])->name('logout');
 
 Route::post('posts/{post}/comment', [CommentController::class, 'store'])->name('posts.comment');

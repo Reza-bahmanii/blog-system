@@ -13,7 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::latest()->paginate(2);
 
         return view('posts.home', compact('posts'));
     }
@@ -52,7 +52,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $comments = $post->comments()->latest()->get();
+        $comments = $post->comments()->with('user')->latest()->get();
         // select comment => send to view
         return view('posts.single', compact('comments' , 'post'));
     }

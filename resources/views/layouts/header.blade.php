@@ -47,8 +47,20 @@
                       </li> --}}
                       
                   </ul>
-                  <a href="{{ route('login') }}" class="btn btn-primary" style="margin: 10px;">Login</a>
-                  <a href="{{ route('register') }}" class="btn btn-primary" style="margin: 10px;">Register</a>
+
+                  @auth()
+                    <form action="{{ route('logout') }}" method="post">
+                        
+                        @csrf
+                        <button class="btn btn-danger">Logout</button>
+                    </form>
+                  @endauth
+
+                  @guest()
+                    <a href="{{ route('login') }}" class="btn btn-primary" style="margin: 10px;">Login</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary" style="margin: 10px;">Register</a>
+                  @endguest
+
               </div>
           </div>
       </nav>
