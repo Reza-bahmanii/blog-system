@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -10,6 +11,11 @@ class AdminController extends Controller
     public function show()
     {
         return view('admin/dashboard');
+    }
+
+    public function posts(){
+        $posts = Post::with(['user' , 'category' , 'tags'])->orderby('id' , 'asc')->get();
+        return view('admin/post/posts', compact('posts'));
     }
 
     public function users()
@@ -35,7 +41,7 @@ class AdminController extends Controller
 
         $user->update($validateUser);
 
-        return redirect()->route('dashboard.users');
+        return redirect()->route('dashboard.users')->with('success', 'یوزر آپدیت شد');
 
     }
 
@@ -46,5 +52,11 @@ class AdminController extends Controller
         $user->delete();
 
         return redirect()->route('dashboard.users');
+    }
+
+    public function test(){
+        $posts = Post::find(11);
+        $tags = $posts->tags;
+        dd($tags);
     }
 }

@@ -1,4 +1,3 @@
-
 @extends('adminlayout')
 
 @section('title', 'dashboard')

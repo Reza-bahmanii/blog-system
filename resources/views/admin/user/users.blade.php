@@ -1,6 +1,6 @@
 @extends('adminlayout')
 
-@section('title', 'User pannel')
+@section('title', 'User Pannel')
 
 @section('page-title', 'مدیریت کاربران')
 
@@ -20,14 +20,14 @@
         <tbode>
             @foreach ($users as $user)
                 <tr>
-                    <td>{{ $user->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}</td>
                     <td>
-                        <a href="{{ route('admin.user.edit' , $user->id)}}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary">Edit</a>
                         <form action="{{ route('admin.user.delete', $user->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
@@ -39,4 +39,9 @@
             @endforeach
         </tbode>
     </table>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 @endsection

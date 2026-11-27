@@ -32,6 +32,8 @@ Route::post('posts/{post}/comment', [CommentController::class, 'store'])->name('
 
 Route::get('dashboard', [AdminController::class, 'show'])->name('dashboard');
 
+Route::get('dashboard/posts' , [AdminController::class , 'posts'])->name('dashboard.posts');
+
 Route::get('dashboard/users', [AdminController::class, 'users'])->name('dashboard.users');
 
 Route::get('dashboard/users/{id}' , [AdminController::class, 'edit'])->name('admin.user.edit');
@@ -40,6 +42,7 @@ Route::put('dashboard/users/{id}' , [AdminController::class, 'update'])->name('a
 
 Route::delete('dashboard/users/{id}', [AdminController::class, 'delete'])->name('admin.user.delete');
 
+Route::get('dashboard/test', [AdminController::class, 'test'])->name('dashboard.test');
 
 
 // Route::get('/' , function(){
