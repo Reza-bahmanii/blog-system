@@ -5,12 +5,10 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use App\Models\Post;
-
 use App\Models\Category;
-use Illuminate\Auth\Events\Logout;
+
 
 Route::get('/', function () {
 
@@ -31,3 +29,19 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('logout', [LogoutController::class , 'destroy'])->name('logout');
 
 Route::post('posts/{post}/comment', [CommentController::class, 'store'])->name('posts.comment');
+
+Route::get('dashboard', [AdminController::class, 'show'])->name('dashboard');
+
+Route::get('dashboard/users', [AdminController::class, 'users'])->name('dashboard.users');
+
+Route::get('dashboard/users/{id}' , [AdminController::class, 'edit'])->name('admin.user.edit');
+
+Route::put('dashboard/users/{id}' , [AdminController::class, 'update'])->name('admin.user.update');
+
+Route::delete('dashboard/users/{id}', [AdminController::class, 'delete'])->name('admin.user.delete');
+
+
+
+// Route::get('/' , function(){
+//     return view('test');
+// });
