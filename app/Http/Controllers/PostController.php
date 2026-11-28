@@ -46,7 +46,6 @@ class PostController extends Controller
             ...$validateDate,
         ]);
         $posts = $post->tags()->sync($request->input('tags' , []));
-        dd($posts);
 
         return redirect(route('posts.index'));
     }

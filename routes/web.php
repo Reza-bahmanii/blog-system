@@ -26,27 +26,30 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::post('logout', [LogoutController::class , 'destroy'])->name('logout');
+Route::post('logout', [LogoutController::class, 'destroy'])->name('logout');
 
 Route::post('posts/{post}/comment', [CommentController::class, 'store'])->name('posts.comment');
 
-Route::get('dashboard', [AdminController::class, 'show'])->name('dashboard');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    
+    Route::get('dashboard', [AdminController::class, 'show'])->name('dashboard');
 
-Route::get('dashboard/posts' , [AdminController::class , 'posts'])->name('dashboard.posts');
+    Route::get('dashboard/posts', [AdminController::class, 'posts'])->name('dashboard.posts');
 
-Route::get('dashboard/users', [AdminController::class, 'users'])->name('dashboard.users');
+    Route::get('dashboard/users', [AdminController::class, 'users'])->name('dashboard.users');
 
-Route::get('dashboard/users/{id}' , [AdminController::class, 'edit'])->name('admin.user.edit');
+    Route::get('dashboard/users/{id}', [AdminController::class, 'edit'])->name('admin.user.edit');
 
-Route::put('dashboard/users/{id}' , [AdminController::class, 'update'])->name('admin.user.update');
+    Route::put('dashboard/users/{id}', [AdminController::class, 'update'])->name('admin.user.update');
 
-Route::delete('dashboard/users/{id}', [AdminController::class, 'delete'])->name('admin.user.delete');
+    Route::delete('dashboard/users/{id}', [AdminController::class, 'delete'])->name('admin.user.delete');
 
-Route::get('dashboard/test', [AdminController::class, 'test'])->name('dashboard.test');
+    Route::get('dashboard/test', [AdminController::class, 'test'])->name('dashboard.test');
 
-Route::get('dashboard/tags', [AdminController::class, 'tags'])->name('admin.tags');
+    Route::get('dashboard/tags', [AdminController::class, 'tags'])->name('admin.tags');
 
-Route::post('dashboard/tags', [AdminController::class, 'storeTag'])->name('admin.storeTag');
+    Route::post('dashboard/tags', [AdminController::class, 'storeTag'])->name('admin.storeTag');
+});
 
 
 // Route::get('/' , function(){
