@@ -19,8 +19,8 @@
           <div class="container-fluid">
               <!-- Navbar brand -->
               <a class="navbar-brand" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-                  <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="16" alt="" loading="lazy"
-                      style="margin-top: -3px;" />
+                  <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="16" alt=""
+                      loading="lazy" style="margin-top: -3px;" />
               </a>
               <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarExample01"
                   aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,8 +32,8 @@
                           <a class="nav-link" aria-current="page" href="{{ route('posts.index') }}">Home</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('posts.create') }}" rel="nofollow"
-                              target="_blank">Create Post</a>
+                          <a class="nav-link" href="{{ route('posts.create') }}" rel="nofollow" target="_blank">Create
+                              Post</a>
                       </li>
                   </ul>
 
@@ -45,20 +45,53 @@
                               <i class="fab fa-youtube"></i>
                           </a>
                       </li> --}}
-                      
+
                   </ul>
 
+                  {{-- <div class="container">
+                      <form class="bg-light border p-4 rounded-3 my-4">
+                          <div class="row g-3">
+                              <div class="col-xl-3">
+                                  <input type="search" class="form-control me-1"
+                                      placeholder="جستجو بر اساس کلمه کلیدی">
+                              </div>
+                          </div>
+                          <button type="submit" class="btn btn-primary">جستجو</button>
+                      </form>
+                  </div> --}}
+
+
+                  <div class="container">
+                      <form action="{{ route('search') }}" method="GET" class="bg-light border rounded-3 p-4 my-4">
+
+                          <div class="row g-2 align-items-center">
+                              <div class="col-md-9">
+                                  <input type="search" name="search" class="form-control"
+                                      placeholder="جستجو">
+                              </div>
+
+                              <div class="col-md-3">
+                                  <button type="submit" class="btn btn-primary w-100">
+                                      جستجو
+                                  </button>
+                              </div>
+                          </div>
+
+                      </form>
+                  </div>
+
+
                   @auth()
-                    <form action="{{ route('logout') }}" method="post">
-                        
-                        @csrf
-                        <button class="btn btn-danger">Logout</button>
-                    </form>
+                      <form action="{{ route('logout') }}" method="post">
+
+                          @csrf
+                          <button class="btn btn-danger">Logout</button>
+                      </form>
                   @endauth
 
                   @guest()
-                    <a href="{{ route('login') }}" class="btn btn-primary" style="margin: 10px;">Login</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary" style="margin: 10px;">Register</a>
+                      <a href="{{ route('login') }}" class="btn btn-primary" style="margin: 10px;">Login</a>
+                      <a href="{{ route('register') }}" class="btn btn-primary" style="margin: 10px;">Register</a>
                   @endguest
 
               </div>
@@ -70,10 +103,10 @@
       <div id="intro" class="p-5 text-center bg-light">
           <h1 class="mb-3 h2">Blog Page</h1>
           <p class="mb-3">You can create your post <a href="{{ route('posts.create') }}">here</a></p>
-          <a class="btn btn-primary m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" data-mdb-ripple-init
-              target="_blank">Start tutorial</a>
-          <a class="btn btn-primary m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank" data-mdb-ripple-init
-              role="button">Download MDB UI KIT</a>
+          <a class="btn btn-primary m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button"
+              rel="nofollow" data-mdb-ripple-init target="_blank">Start tutorial</a>
+          <a class="btn btn-primary m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank"
+              data-mdb-ripple-init role="button">Download MDB UI KIT</a>
       </div>
       <!-- Jumbotron -->
   </header>

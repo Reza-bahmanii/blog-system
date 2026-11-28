@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::resource('posts', PostController::class);
 
+Route::get('posts', [PostController::class , 'search'])->name('search');
+
 Route::get('/register', [RegisterController::class, 'show'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 

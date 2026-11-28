@@ -55,11 +55,11 @@ class AdminController extends Controller
         return redirect()->route('dashboard.users');
     }
 
-    public function test(){
-        $posts = Post::find(11);
-        $tags = $posts->tags;
-        dd($tags);
-    }
+    // public function test(){
+    //     $posts = Post::find(11);
+    //     $tags = $posts->tags;
+    //     dd($tags);
+    // }
 
     public function tags(){
         return view('admin.tags');

@@ -96,4 +96,11 @@ class PostController extends Controller
 
         return redirect(route('posts.index'));
     }
+
+    public function search(Request $request){
+        $search = $request->input('search');
+        $posts = Post::where('title' , 'like', "%{$search}%")->get();
+
+        return view('posts.home', compact('posts'));
+    }
 }
