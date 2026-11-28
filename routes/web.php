@@ -44,6 +44,10 @@ Route::delete('dashboard/users/{id}', [AdminController::class, 'delete'])->name(
 
 Route::get('dashboard/test', [AdminController::class, 'test'])->name('dashboard.test');
 
+Route::get('dashboard/tags', [AdminController::class, 'tags'])->name('admin.tags');
+
+Route::post('dashboard/tags', [AdminController::class, 'storeTag'])->name('admin.storeTag');
+
 
 // Route::get('/' , function(){
 //     return view('test');

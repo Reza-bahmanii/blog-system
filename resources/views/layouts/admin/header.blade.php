@@ -58,6 +58,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="{{ route('admin.tags') }}" class="nav-link">
+                            <i class="nav-icon bi bi-people"></i>
+                            <p>مدیریت برچسب ها</p>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
         </div>

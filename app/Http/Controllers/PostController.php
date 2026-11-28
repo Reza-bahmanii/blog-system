@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -24,8 +25,9 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::latest()->get();
+        $tags = Tag::latest()->get();
 
-        return view('posts.create', compact('categories'));
+        return view('posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -35,14 +37,16 @@ class PostController extends Controller
     {
         $validateDate = $request->validate([
             'title' => ['required', 'min:5', 'max:255'],
-            'category_id' => ['required','exists:categories,id'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'tags' => ['nullable', 'array'],
             'content' => ['required', 'min:5', 'max:255'],
         ]);
         $user = auth()->user();
-        $category = 
-            $post = $user->posts()->create([
-                ...$validateDate,
-            ]);
+        $post = $user->posts()->create([
+            ...$validateDate,
+        ]);
+        $posts = $post->tags()->sync($request->input('tags' , []));
+        dd($posts);
 
         return redirect(route('posts.index'));
     }
@@ -54,7 +58,7 @@ class PostController extends Controller
     {
         $comments = $post->comments()->with('user')->latest()->get();
         // select comment => send to view
-        return view('posts.single', compact('comments' , 'post'));
+        return view('posts.single', compact('comments', 'post'));
     }
 
     /**

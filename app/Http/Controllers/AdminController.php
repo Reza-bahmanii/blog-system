@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -58,5 +59,20 @@ class AdminController extends Controller
         $posts = Post::find(11);
         $tags = $posts->tags;
         dd($tags);
+    }
+
+    public function tags(){
+        return view('admin.tags');
+    }
+
+    public function storeTag(Request $request){
+        $validateTags = $request->validate([
+            'name' => ['required','min:3','max:255'],
+            'slug'=> ['required','min:3','max:255' , 'unique:tags,slug'],
+        ]);
+
+        Tag::create($validateTags);
+
+        return redirect()->route('admin.tags')->with('success' , 'تگ با موفقیت ساخته شد');
     }
 }

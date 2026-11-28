@@ -14,12 +14,23 @@
                 <span style="color: red;">{{ $message }}</span>
             @enderror
         </div><br>
-        <div class="form-group">
+        <div>
             <label>Category</label>
-            <select name="category_id" id="category_id">
+            <select name="category_id" id="category_id" class="form-control">
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">
                         {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div><br>
+
+        <div>
+            <label>Tag</label>
+            <select name="tags[]" id="tag_id" multiple  class="form-control">
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">
+                        {{ $tag->name }}
                     </option>
                 @endforeach
             </select>
